@@ -12,22 +12,30 @@ export class ApiService {
 
   constructor(private _httpClient:HttpClient) {}
 
-  public getProducts():Observable<IProduct[]>{
+  public getAllProducts():Observable<IProduct[]>{
     //const params = sort ? `?sort=${sort}` : ''; 
     // return this._httpClient.get<IProduct[]>(`${this.baseURL}${params}`);
     return this._httpClient.get<IProduct[]>(`${this.baseURL}`);
   }
 
-  public getProductById(id:number | string):Observable<IProduct>{
+  public getProduct(id:number | string):Observable<IProduct>{
     return this._httpClient.get<IProduct>(`${this.baseURL}/${id}`)
   }
 
-  public getCategories(category:string):Observable<Category[]>{
+  public getAllCategories(category:string):Observable<Category[]>{
     return this._httpClient.get<Category[]>(`${this.baseURL}/categories`)
   }
 
-  public postProduct(product:IProduct):Observable<IProduct>{
+  public newProduct(product:IProduct):Observable<IProduct>{
     return this._httpClient.post<IProduct>(this.baseURL,product);
+  }
+
+  public updateProduct(id:number | string,product:IProduct):Observable<IProduct>{
+    return this._httpClient.put<IProduct>(`${this.baseURL}/${id}`,product);
+  }
+
+  public deleteProduct(id:number | string):Observable<IProduct>{
+    return this._httpClient.delete<IProduct>(`${this.baseURL}/${id}`)
   }
 
 }

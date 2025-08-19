@@ -1,3 +1,9 @@
 .red-color {
   color:red;
 }
+
+.custom-table {
+  border-collapse: separate;
+  border-spacing: 1.2rem;
+  text-align: start;
+}
